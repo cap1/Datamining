@@ -2,28 +2,29 @@
 
 nDims = 2;
 nVecs = 100;
+nDataSets = 10;
 
-XdataMat = rand(nDims,nVecs);
+DataSetMaxVarMat =[];
+for i=1:nDataSets
+	XdataMat = rand(nDims,nVecs);
 
-%plot(XdataMat(1,:),XdataMat(2,:),'x')
+	%plot(XdataMat(1,:),XdataMat(2,:),'x')
 
-meanVec = mean(XdataMat,nDims);
-XshiftDataMat = XdataMat-repmat(meanVec,1,nVecs);
-%plot(XshiftDataMat(1,:),XshiftDataMat(2,:),'xr');
+	meanVec = mean(XdataMat,nDims);
+	XshiftDataMat = XdataMat-repmat(meanVec,1,nVecs);
+	%plot(XshiftDataMat(1,:),XshiftDataMat(2,:),'xr');
 
-maxAlphaAngle =0;
-maxVar = 0;
-for alphaAngle=0:360
-
-	RotMat = [ cos(alphaAngle), sin(alphaAngle);-sin(alphaAngle), cos(alphaAngle) ];
-	XrotShiftDataMat = RotMat*XshiftDataMat;
-	xVar = var(XrotShiftDataMat(:,1));
-	if xVar > maxVar
-		maxVar = xVar;
-		maxAlphaAngle = alphaAngle;
+	xVarMat = [];
+	for alphaAngle=1:360
+		RotMat = [ cos(alphaAngle), sin(alphaAngle);-sin(alphaAngle), cos(alphaAngle) ];
+		XrotShiftDataMat = RotMat*XshiftDataMat;
+		xVar = var(XrotShiftDataMat(:,1));
+		xVarMat = [ xVarMat; alphaAngle, xVar ];
 	end
+	[maxVar, maxAlphaAngle] = max(xVarMat(:,2))
+	DataSetMaxVarMat = [ DataSetMaxVarMat; maxAlphaAngle, maxVar];	
+	plot(xVarMat(:,1),xVarMat(:,2));
+	sleep(1.5);
 end
 
-maxVar
-maxAlphaAngle
-%plot(XrotShiftDataMat(1,:),XrotShiftDataMat(2,:),'xb');
+plot(DataSetMaxVarMat(:,1),DataSetMaxVarMat(:,2),'xb')
