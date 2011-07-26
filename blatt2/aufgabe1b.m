@@ -15,7 +15,8 @@ for i=1:nDataSets
 
 	mVar = 100;
 	vVar = rand(nDims,1);
-	[eigenVec] = firstEigenVec (mVar, vVar, XdataMat)
+	CovMat = cov(XdataMat')
+	[eigenVec] = firstEigenVec (mVar, vVar, CovMat)
 	%Eigenvec liegt von nullpunkt aus in richtung der ersten hauptkomponente
 	%	== richtung groesster varianz
 	[Val, Vec ] = eig(cov(XdataMat'))
