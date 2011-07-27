@@ -30,4 +30,5 @@ hold on
 plot(NormGenMat(1,:),NormGenMat(2,:),"og")
 plot(PutGenMat(1,:),PutGenMat(2,:),"ob")
 plot(HighGenMat(1,:),HighGenMat(2,:),"or")
+legend('Normales Gen','putatives Fremdgen', 'hochexpremiertes Gen','south');
 hold off
