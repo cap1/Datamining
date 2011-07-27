@@ -1,6 +1,7 @@
 % Blatt 3: Dimensionsreduktion von Codon-Usage Vektoren
 % 	Aufgabe 1: RSCU-Daten und PCA
 
+path(path,'../funktions/');
 
 load("../data/EcoliRSCU.mat")
 % Variables are 'Vectors' and 'Labels'

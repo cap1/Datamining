@@ -1,5 +1,7 @@
 %Aufgabe3: Kovarianz
 
+path(path,'../funktions/');
+
 nDims = 2;
 nVecs = 100;
 nDataSets = 1;

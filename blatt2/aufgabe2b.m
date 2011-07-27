@@ -1,5 +1,7 @@
 % Aufgabe 2: Versteckte Struckturen
 
+path(path,'../funktions/');
+
 load("../data/Hidden1.mat");
 %load("../data/Hidden2.mat");
 % this gives us Xdata
