@@ -3,7 +3,8 @@
 
 path(path,'../funktions/');
 
-load("../data/EcoliRSCU.mat")
+%load("../data/EcoliRSCU.mat")
+load("../data/BsubRSCU.mat")
 % Variables are 'Vectors' and 'Labels'
 
 [nDim , nVal] = size(Vectors);
