@@ -11,14 +11,22 @@ load("../data/EcoliRSCU.mat")
 CovMat = cov(Vectors');
 %bar(sort(diag(CovMat),'descend'))
 
-% eigentlich die ersten 5 Hauptkomponennten
-nHK = 5;
+% eigentlich die ersten 3/5 Hauptkomponennten
+nHK = 3;
 
 mVar = 300;
 vVar = rand(nDim,1);
 
 EigMat = nEigenVec(nHK,mVar,vVar,Vectors);
+ProjMat = EigMat'*Vectors;
 
-proj = EigMat'*Vectors;
+% Sort via Labels
+NormGenMat = ProjMat(:,(Labels==0));
+PutGenMat = ProjMat(:,(Labels==1));
+HighGenMat = ProjMat(:,(Labels==2));
 
-plot(proj(1,:),proj(2,:),"or")
+hold on
+plot(NormGenMat(1,:),NormGenMat(2,:),"og")
+plot(PutGenMat(1,:),PutGenMat(2,:),"ob")
+plot(HighGenMat(1,:),HighGenMat(2,:),"or")
+hold off
