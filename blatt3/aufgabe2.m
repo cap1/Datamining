@@ -19,7 +19,7 @@ path(path,'../funktions/');
 %save("-binary", "../data/Dist.mat",DistMat);
 %save("-ascii", "../data/Dist.ascii",DistMat);
 
-load('/c1/scratch/ralph/distmat.mat');
+load(-binary,'/c1/scratch/ralph/distmat.mat');
 nVecs = size(DistMat,2);
 
 SquareDistMat = DistMat.^2;
